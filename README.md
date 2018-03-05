@@ -1,0 +1,2 @@
+# About
+Given a sequence of images-or a video-the script will save all the images/frames where something happens. Using SSIM, and due to the lack of change in the background, it can be assumed that the only moments where the SSIM is very different is when people walk in front of the camera.
