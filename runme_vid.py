@@ -122,7 +122,7 @@ class FindPeopleVid:
     Run an specific number of iterations
     """
     if not os.path.isfile(self.pdir+self.video):
-      print('File not found')
+      print('File not found: {}'.format(self.pdir+self.video))
       sys.exit()
     else:
       print(self.pdir+self.video)
@@ -188,10 +188,26 @@ if __name__=='__main__':
   """
   Remove pictures without people
   """
-  record = '/media/hector-cic/DATA/MTA/Research_Project/Database/CICATA18_People_Walking/180305_01/'
+
+  """
+  Folders already processed:
+    -1803_010203_01
+    -180305_01
+    -180305_02
+    -180306_01
+    -180306_02
+    -180306_03
+  """
+  record = '../180306_03/'
   folder = '100GOPRO/'
-  videos = ['GOPR7868.MP4','GP017868.MP4','GP027868.MP4','GP037868.MP4',
-            'GP047868.MP4','GP057868.MP4','GP067868.MP4','GP077868.MP4']
+  #videos = ['GOPR7860.MP4','GP017860.MP4','GP027860.MP4','GP037860.MP4',
+  #          'GP047860.MP4','GP057860.MP4','GP067860.MP4','GP077860.MP4']
+  files = os.listdir(record+folder)
+  videos = []
+  for file_ in files:
+    if '.MP4' in file_:
+      videos.append(file_)
+  videos.sort()
 
   for video in videos:
     fppl = FindPeopleVid(mdir=record,folder=folder,video=video)
